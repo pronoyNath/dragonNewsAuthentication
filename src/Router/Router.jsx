@@ -7,6 +7,7 @@ import Career from "../Components/Career/Career";
 import Register from "../Components/Register/Register";
 import ComingSoon from "../Components/ComingSoon/ComingSoon";
 import NewsDetails from "../Components/NewsList/NewsDetails";
+import PriveteRoute from "./PriveteRoute";
 
 const router = createBrowserRouter([
     {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
         },
         {
             path: '/news/:id',
-            element: <NewsDetails></NewsDetails>,
+            element: <PriveteRoute><NewsDetails></NewsDetails></PriveteRoute>,
             loader: ()=>fetch('/news.json')
         },
         {

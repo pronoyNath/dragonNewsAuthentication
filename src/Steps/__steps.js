@@ -5,4 +5,5 @@
  * used react marquee for lastest news sliding
  * 
  * onAuthState--> always user k state er moddhe rakhbo karon etake amra bahire onk jaygay use korbo
+ * login,logout,createUser everyTime loading true thakbe sudhu useEffect a onAuth hoyar por loading(false) hoye jabe.
  */
