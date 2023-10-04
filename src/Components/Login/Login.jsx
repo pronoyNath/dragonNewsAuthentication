@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Header/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext);
 
     const handleLogin = e =>{
         e.preventDefault();
@@ -14,7 +17,16 @@ const Login = () => {
         const form = new FormData(e.currentTarget);
         const email = form.get('email')
         const password = form.get('password')
-        console.log(email,password);
+
+        // log in 
+        signIn(email,password)
+        .then(result=>{
+            console.log(result);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+
 
     }
 
@@ -23,7 +35,7 @@ const Login = () => {
             <div className="mb-5">
             <Navbar></Navbar>
             </div>
-            <div className="hero min-h-screen bg-base-200 -mt-24 ">
+            <div className="hero h-[600px] bg-base-200 -mt-24 ">
                 <div className="hero-content  w-3/4">
                     <div className="card rounded-none  w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleLogin} className="card-body">
