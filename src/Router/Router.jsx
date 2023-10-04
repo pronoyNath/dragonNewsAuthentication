@@ -5,6 +5,7 @@ import MainLayout from "../layouts/MainLayout";
 import About from "../Components/About/About";
 import Career from "../Components/Career/Career";
 import Register from "../Components/Register/Register";
+import ComingSoon from "../Components/ComingSoon/ComingSoon";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         {
             path: '/register',
             element: <Register></Register>
+        },
+        {
+            path: '/category/:id',
+            element: <ComingSoon></ComingSoon>
         }
         ]
 

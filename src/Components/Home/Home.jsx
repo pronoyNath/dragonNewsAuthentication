@@ -7,18 +7,18 @@ import LatestNews from './LatestNews';
 
 const Home = () => {
     return (
-        <div>
+        <div className='pb-10'>
                 <Header></Header>
                 <LatestNews></LatestNews>
                 <Navbar></Navbar>
-                <div className='border grid grid-cols-4 gap-5'>
-                    <div className='border'>
+                <div className=' grid grid-cols-4 gap-5 pt-16'>
+                    <div className=''>
                     <LeftSideNav></LeftSideNav>
                     </div>
-                    <div className='border col-span-2'>
+                    <div className=' col-span-2'>
                     <NewsList></NewsList>
                     </div>
-                    <div className='border'>
+                    <div className=''>
                     <RightSideNav></RightSideNav>
                     </div>
                 </div>

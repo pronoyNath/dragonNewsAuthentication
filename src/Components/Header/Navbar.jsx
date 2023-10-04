@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import userDefaultPic from '../../assets/user.png'
 
 const Navbar = () => {
@@ -38,7 +38,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-base-100 pt-10 pb-16">
+            <div className="navbar bg-base-100 pt-10">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -64,7 +64,7 @@ const Navbar = () => {
                             <img src={userDefaultPic} />
                         </div>
                     </label>
-                    <a className="py-2 px-6 text-white font-semibold rounded-none btn-neutral">login</a>
+                    <Link to={'/login'} className="py-2 px-6 text-white font-semibold rounded-none btn-neutral">login</Link>
                 </div>
             </div>
         </div>
