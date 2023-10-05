@@ -13,7 +13,7 @@ const NewsDetails = () => {
     const [news, setNews] = useState([]);
 
     useEffect(()=>{
-        const findNews = newses?.find(news =>news._id == id);
+        const findNews = newses?.find(news =>news._id === id);
         setNews(findNews);
 
     },[id,newses]);

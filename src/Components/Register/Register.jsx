@@ -1,7 +1,8 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Header/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { sendEmailVerification } from "firebase/auth";
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
@@ -21,11 +22,19 @@ const Register = () => {
         const password = form.get('password')
         console.log(name, email, password);
 
+        
+
         // creating user 
         createUser(email, password)
             .then(result => {
                 console.log(result);
-               navigate('/')
+                sendEmailVerification(result.user);
+                 if(!result.user.emailVerified){
+                    alert("Please check your mail address to verify.")
+                }
+                else{
+                    navigate('/')
+                }
             })
             .catch(err => {
                 console.log(err);
@@ -63,9 +72,7 @@ const Register = () => {
                                         <span className="label-text">Password</span>
                                     </label>
                                     <input type="password" name="password" placeholder="password" className="input input-bordered rounded-none" required />
-                                    <label className="label">
-                                        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                    </label>
+                                    
                                 </div>
                                 <div className="form-control mt-6">
                                     <button className="btn btn-neutral rounded-none">Register</button>

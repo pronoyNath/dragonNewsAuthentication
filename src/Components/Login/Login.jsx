@@ -2,12 +2,16 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Header/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { useRef } from "react";
+import { sendPasswordResetEmail } from "firebase/auth";
+
 
 const Login = () => {
-    const {signIn} = useContext(AuthContext);
+    const {signIn,passReset} = useContext(AuthContext);
     const location = useLocation();
     // console.log(location);
     const navigate = useNavigate();
+    const emailRef = useRef(null);
 
     const handleLogin = e =>{
         e.preventDefault();
@@ -34,9 +38,12 @@ const Login = () => {
            
         })
 
-
     }
 
+    const handleResetPass =()=>{
+        const email = emailRef.current.value;
+        passReset(email)
+    }
     return (
         <div>
             <div className="mb-5">
@@ -51,7 +58,12 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" name="email" placeholder="email" className="input input-bordered rounded-none" required />
+                                <input 
+                                type="email"
+                                ref={emailRef}
+                                 name="email" 
+                                 placeholder="email" 
+                                 className="input input-bordered rounded-none" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -59,7 +71,7 @@ const Login = () => {
                                 </label>
                                 <input type="password" name="password" placeholder="password" className="input input-bordered rounded-none" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <a onClick={handleResetPass} href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
                             <div className="form-control mt-6">
