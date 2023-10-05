@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
-    const {user,signIn} = useContext(AuthContext);
+    const {signIn} = useContext(AuthContext);
     const location = useLocation();
     // console.log(location);
     const navigate = useNavigate();

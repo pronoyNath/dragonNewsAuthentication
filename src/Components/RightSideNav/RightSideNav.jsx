@@ -1,24 +1,46 @@
 import { FaFacebook, FaGithub, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 import qzone1 from '../../assets/qZone1.png'
 import qzone2 from '../../assets/qZone2.png'
 import qzone3 from '../../assets/qZone3.png'
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const RightSideNav = () => {
+    const {googleSignIn, GithubSignIn} = useContext(AuthContext);
+
+    const handleGoogle = ()=>{
+       googleSignIn()
+       .then(re =>{
+        console.log(re);
+       })
+       .catch(err=>{
+        console.log(err);
+       })
+    }
+    const handleGithub = ()=>{
+        GithubSignIn()
+        .then(result=>{
+            console.log(result);
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+    }
+
     return (
         <div>
             <div className="">
                 <h3 className="text-lg font-semibold text-[#403F3F] mb-5">Login With</h3>
                 <div className="space-y-2">
                    <div>
-                   <Link to={'/login'}>
-                        <button className="btn btn-outline btn-primary rounded-md w-full btn-sm"><FaGoogle></FaGoogle> Login with google</button></Link>
+                   
+                        <button onClick={handleGoogle} className="btn btn-outline btn-primary rounded-md w-full btn-sm"><FaGoogle></FaGoogle> Login with google</button>
                    </div>
 
                    <div>
-                   <Link to={'/login'}>
-                        <button className="btn btn-outline btn-neutral rounded-md w-full btn-sm"><FaGithub></FaGithub> Login with github</button>
-                    </Link>
+                   
+                        <button onClick={handleGithub} className="btn btn-outline btn-neutral rounded-md w-full btn-sm"><FaGithub></FaGithub> Login with github</button>
+                   
                    </div>
                 </div>
                 <div className="mt-10">

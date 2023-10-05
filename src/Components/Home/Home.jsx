@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import Header from '../Header/Header';
 import Navbar from '../Header/Navbar';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
@@ -6,6 +7,7 @@ import RightSideNav from '../RightSideNav/RightSideNav';
 import LatestNews from './LatestNews';
 
 const Home = () => {
+    
     return (
         <div className='pb-10'>
                 <Header></Header>
