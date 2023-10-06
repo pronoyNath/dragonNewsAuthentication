@@ -3,7 +3,6 @@ import Navbar from "../Header/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useRef } from "react";
-import { sendPasswordResetEmail } from "firebase/auth";
 
 
 const Login = () => {
